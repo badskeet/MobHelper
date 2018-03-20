@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Персональный помощник руководителя РБ</title>
+  <link rel="stylesheet" href="libs/framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="color-theme-green">
+  <div id="app">
+    <!-- Statusbar -->
+    <f7-statusbar></f7-statusbar>
+
+    <!-- Views/Tabs container -->
+    <f7-views tabs class="ios-edges" theme="green">
+    
+    	<!-- Tabbar component for switching views-tabs -->
+		<com-toolbar></com-toolbar>
+		
+		<!-- Main view/tab, should have "view-main" class. It also has "tab-active" class -->
+        <f7-view id="view-main" tab> 
+            <!-- Pages -->
+            
+            	 <!-- Page, data-name contains page name which can be used in page callbacks -->
+
+
+				 
+        </f7-view>
+ 
+ 		<!-- Welcome View -->
+ 		<!--
+		<f7-view id="view-index" tab>
+			<page-index></page-index>
+		</f7-view>
+		-->
+        
+		<!-- Signal View -->
+		<f7-view id="view-signal" tab tab-active>
+			<!-- Signal page will be loaded here dynamically from /signal/ route -->
+			<page-signal></page-signal>
+		</f7-view>
+		
+		<!-- Channel View -->
+		<f7-view id="view-channel" tab>
+			<!-- Channel page will be loaded here dynamically from /signal/ route -->
+			<page-channel></page-channel>
+		</f7-view>
+		
+		<!-- Analize View -->
+		<f7-view id="view-analize" tab>
+			<!-- Channel page will be loaded here dynamically from /signal/ route -->
+			<page-analize></page-analize>
+		</f7-view>
+		
+		
+		<!-- Monitor View -->
+		<f7-view id="view-monitor" tab>
+			<!-- Monitor page will be loaded here dynamically from /monitor/ route -->
+			<page-monitor></page-monitor>
+		</f7-view>
+		
+		<!-- Analitics View -->
+		<f7-view id="view-analitics" tab>
+			<!-- Analitics page will be loaded here dynamically from /analitics/ route -->
+			<page-analitics></page-analitics>
+		</f7-view>
+		
+		<!-- AllNews View -->
+		<f7-view id="view-allnews" tab>
+			<!-- AllNews page will be loaded here dynamically from /allnews/ route -->
+			<page-allnews></page-allnews>
+		</f7-view>
+		
+		<!-- News View -->
+		<f7-view id="view-news" tab>
+			<!-- News page will be loaded here dynamically from /news/ route -->
+			<page-news></page-news>
+		</f7-view>
+		
+    </f7-views>
+
+	<!-- Popovers -->   
+	<f7-popover id="popover-links">
+	      <f7-list class="wo-bg">
+	            <f7-list-item media-list link="mailto:ASChernyshev@sberbank.ru;NKGoltyayev@sberbank.ru;ALGMakarova@sberbank.ru?subject=App:Помощник руководителя РБ" external title="Обратная связь">
+					<div slot="media"><f7-icon f7="chat"></f7-icon></div>
+		        </f7-list-item>
+	            <f7-list-item media-list link="#" login-screen-open="#my-login-screen" title="Выйти" popover-close>
+	            	<div slot="media"><f7-icon f7="login"></f7-icon></div>
+	            </f7-list-item>
+          </f7-list>
+	</f7-popover>  
+
+    <!-- Popup -->
+    <f7-popup id="popup">
+      <f7-view>
+        <f7-page>
+          <f7-navbar title="Popup">
+            <f7-nav-right>
+              <f7-link popup-close>Close</f7-link>
+            </f7-nav-right>
+          </f7-navbar>
+          <f7-block>Тестовый попап!</f7-block>
+        </f7-page>
+      </f7-view>
+    </f7-popup>
+    
+   
+    
+    <f7-actions id="open-more-actions">
+  <!-- Actions Group -->
+  <f7-actions-group>
+    <!-- Actions Label -->
+    <f7-actions-label>Hello</f7-actions-label>
+    <!-- Actions Buttons -->
+    <f7-actions-button>Button 1</f7-actions-button>
+    <f7-actions-button @click="alert('test')">Button 2</f7-actions-button>
+  </f7-actions-group>
+  <!-- Another Group -->
+  <f7-actions-group>
+    <!-- Cancel/Close Button -->
+    <f7-actions-button color="red" bold @click="$f7.alert('Clicked Cancel button')">Cancel</f7-actions-button>
+  </f7-actions-group>
+</f7-actions>
+
+ 
+
+
+    
+    
+    
+    <!-- Login Screen -->
+    <f7-login-screen id="my-login-screen" :opened="true">
+      <f7-view>
+        <f7-page login-screen :page-content="false">
+        	<div slot="fixed" class="page-content login-screen-content mybg">
+				<f7-login-screen-title><!--Login Title--></f7-login-screen-title>
+				<div style="display: block;height: 300px;"></div>
+				<f7-list form>
+				<f7-list-item>
+					<f7-icon f7="person" slot="media"></f7-icon>
+					<f7-label><!--Login Label--></f7-label>
+					<f7-input clear-button icon-f7="favorites" name="username" placeholder="Имя пользователя" type="text"></f7-input>
+				</f7-list-item>
+				<f7-list-item>
+					<f7-icon f7="lock" slot="media"></f7-icon>
+					<f7-label><!--Password Label--></f7-label>
+					<f7-input clear-button name="password" type="password" placeholder="Пароль"></f7-input>
+				</f7-list-item>
+				</f7-list>
+				<f7-list>
+				<f7-button raised big fill  color="green" class="login-button" title="Войти" login-screen-close><b>Войти</b></f7-button>            
+				<f7-block-footer>
+				  <p>Забыли пароль?</p>
+				</f7-block-footer>
+				</f7-list>
+			</div>
+        </f7-page>
+      </f7-view>
+    </f7-login-screen>
+    
+  
+    <!-- Toolbar Component Template -->
+  	<template id="com-toolbar">
+	    <f7-toolbar tabbar labels >
+          <f7-link tab-link tab-link-active href="#view-signal" icon-f7="favorites"><i class="icon f7-icons icon-ios-fill">favorites</i><span class="tabbar-label">Сигналы</span></f7-link>
+		  <f7-link tab-link href="#view-monitor" icon-f7="graph_square"><i class="icon f7-icons icon-ios-fill">graph_square</i><span class="tabbar-label">Аналитика</span></f7-link>
+		  <f7-link tab-link href="#view-analitics" icon-f7="pie"><i class="icon f7-icons icon-ios-fill">pie</i><span class="tabbar-label">Аналитика</span></f7-link>
+		  <f7-link tab-link href="#view-allnews" icon-f7="world"><i class="icon f7-icons icon-ios-fill">world</i><span class="tabbar-label">Новости</span></f7-link>
+		  <f7-link tab-link="#" popover-open="#popover-links" icon-f7="more_fill"><i class="icon f7-icons icon-ios-fill">more_fill</i><span class="tabbar-label">Ещё</span></f7-link>
+      </f7-toolbar>
+	</template>
+
+	<!-- Welcome Page Template -->
+	<!--
+	<template id="page-index" >
+		<f7-page>
+			<f7-navbar>
+				<f7-nav-title>Информация</f7-nav-title>
+			</f7-navbar>
+		    <f7-block block-strong align="center" block-title="Информация">
+				    <center><p>Приветствуем Вас, <span id="FirstName">XXX</span>!<br>Вы успешно вошли в мобильное приложение помощник руководителя РБ.</p></center>
+				    <center><p>Выберите вкладку <b>Cигналы</b>, для просмотра сигналов подготовленных для Вас!</p></center>
+			</f7-block>
+		</f7-page>
+	</template >
+	-->
+
+	<!-- Signal Page Template -->
+	<template id="page-signal">
+		<f7-page hide-navbar-on-scroll>
+			<f7-navbar>
+				<f7-nav-title>Сигналы</f7-nav-title>
+				<f7-nav-right><f7-link icon-f7="sort"></f7-link></f7-nav-right>
+			</f7-navbar>
+			<f7-tabs>
+			    <f7-subnavbar>
+			        <f7-segmented class="segmented-raised">
+			            <f7-link tab-link class="mygreenbutton" href="#tab-1" tab-link-active>Все</f7-link>
+			            <f7-link tab-link class="mygreenbutton" href="#tab-2">По типу</f7-link>
+			            <f7-link tab-link class="mygreenbutton" href="#tab-3">В работе</f7-link>
+			        </f7-segmented>
+				</f7-subnavbar>
+				<f7-tab id="tab-1" tab-active>
+					<div class="list media-list">
+						<ul>
+							<li v-for="listall in $root.task" class="swipeout">
+							<a :href="'/analize/' + listall.ID_TASK + '/'" class="item-link item-content">
+								<div class="item-content swipeout-content"></div>
+									
+										<div class="item-inner">
+											
+											<div class="item-title-row">
+												<div class="item-title">{{listall.VIOLATION_TYPE_TOP}}</div>
+												<div class="item-after">
+													<f7-badge color="orange" v-if="listall.VIOLATION_TYPE_TOP === 'HR'">HR</f7-badge>
+													<f7-badge color="orange" v-else-if="listall.VIOLATION_TYPE_TOP === 'Общая текучесть персонала'">ТП</f7-badge>
+													<f7-badge color="green" v-else-if="listall.VIOLATION_TYPE_TOP === 'Кросс-Блок С'">БС</f7-badge>
+													<f7-badge color="green" v-else-if="listall.VIOLATION_TYPE_TOP === 'Кросс-Блок КБ'">КС</f7-badge>
+													<f7-badge color="green" v-else-if="listall.VIOLATION_TYPE_TOP === 'Маркетинг'">М</f7-badge>																								<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'Платежные сервисы'">ПС</f7-badge>
+													<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'Прямые продажи'">ПП</f7-badge>
+													<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'ВСП'">ВСП</f7-badge>
+													<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'Эквайринг '">Э</f7-badge>
+													<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'Сбербанк 1'">С1</f7-badge>
+													<f7-badge color="blue" v-else-if="listall.VIOLATION_TYPE_TOP === 'ЦУСУС'">Ц</f7-badge>
+													<f7-badge color="gray" v-else>* * *</f7-badge>
+												</div>
+											</div>
+											<div class="item-subtitle"></div>
+											<div class="item-text">{{listall.vt}}</div>
+											
+										</div>
+										
+								
+								
+								<div class="swipeout-actions-right">
+										<f7-link href="#" data-actions="#open-more-actions" >Взять в работу</f7-link>
+								</div>
+							</a>
+							</li>	
+						</ul>
+					</div>
+				</f7-tab>
+				<f7-tab id="tab-2">
+					<div class="list media-list">
+						<ul>
+							<li v-for="blocklist in $root.channellist"> 
+								<a :href="'/channel/' + blocklist.VIOLATION_TYPE_TOP + '/'" class="item-link item-content">
+									<div class="item-inner">
+										<div class="item-title-row">
+											<div class="item-title">{{blocklist.VIOLATION_TYPE_TOP}}</div>
+											<div class="item-after">
+												<f7-badge color="gray" v-if="blocklist.count === 1">{{blocklist.count}}</f7-badge>
+												<f7-badge color="orange" v-if="blocklist.count > 1 && blocklist.count <= 5">{{blocklist.count}}</f7-badge>
+												<f7-badge color="red" v-if="blocklist.count > 5">{{blocklist.count}}</f7-badge>
+											</div>
+										</div>
+										<div class="item-subtitle"></div>
+										<div class="item-text"></div>
+									</div>
+								</a>
+							</li>	
+						</ul>
+					</div>
+				</f7-tab>
+				<f7-tab id="tab-3">
+				<!--Circle channel badge<div class="circ"><span>Эк</span></div>-->
+					<f7-list media-list>
+					
+						<f7-list-item v-for="inworklist in $root.task" :key="inworklist.ID_TASK" :link="'/analize/' + inworklist.ID_TASK + '/'" title="" after="25.01.2018" :subtitle="inworklist.vt" :text="inworklist.tsk" icon="info"></f7-list-item>
+						 
+					</f7-list>
+				</f7-tab>
+			</f7-tabs>
+		</f7-page>
+	</template>
+
+<!-- Channel Page Template -->
+<template id="page-channel">
+    <f7-page>
+		<f7-navbar>
+			<f7-nav-left><f7-link icon-f7="chevron-left" back></f7-link></f7-nav-left>
+			<f7-nav-title>По типу</f7-nav-title>
+		</f7-navbar>
+		<f7-list media-list>
+			<f7-list-item v-for="chtask in $root.task" :key="chtask.ID_TASK" v-if="chtask.VIOLATION_TYPE_TOP === $f7route.params.vttname" :link="'/analize/' + chtask.ID_TASK+'/'" :title="chtask.VIOLATION_TYPE_TOP" after="28.01.2018" subtitle="" :text="chtask.vt"></f7-list-item>
+		</f7-list>
+    </f7-page>
+</template>
+
+
+<!-- Analize Page Template -->
+<template id="page-analize">
+    <f7-page>
+    	<template v-for="onetask in $root.task"  v-if="onetask.ID_TASK == $f7route.params.taskid">
+		<f7-navbar>
+			<f7-nav-left><f7-link icon-f7="chevron-left" @click="$f7router.navigate('/signal/')" ></f7-link></f7-nav-left>
+			<f7-nav-title>{{onetask.vt}}<br/><span>на 01.02.2018</span></f7-nav-title>
+			<f7-nav-right><f7-link icon-f7="info" class="item-link item-content popup-open" data-popup="#my-popup"></f7-link></f7-nav-right>
+		</f7-navbar>
+		
+	<f7-block>
+		<f7-row no-gap>
+		  <f7-col width="50" class="plan"><span>13,0+(-0,5)%</span><br/>план</f7-col>
+		  <f7-col width="50" class="plan"><span>14,08%</span><br/>факт</f7-col>
+		</f7-row>
+	</f7-block>
+		
+	<f7-block strong>{{onetask.tsk}}</f7-block>
+
+	<f7-block strong class="bigtext">	
+		<f7-link external color="blue" href="/data/testfile.pdf" text-color="blue">Детальная информация по расчёту</f7-link>
+	</f7-block>
+	<f7-button big  round color="gray">Взять в работу</f7-button>
+
+
+
+		
+		<!-- Popup Analize-->
+	    <f7-popup id="my-popup">
+			<f7-view>
+				<f7-page>
+					<f7-navbar :title="onetask.vt">
+						<f7-nav-right>
+						  <f7-link popup-close>Закрыть</f7-link>
+						</f7-nav-right>
+					</f7-navbar>
+				  <f7-block><p>{{onetask.tsk}}</p></f7-block>
+				</f7-page>
+			</f7-view>
+	    </f7-popup>
+		    
+	
+		<!-- Popup Task-->
+	    <f7-popup id="my-task-popup">
+			<f7-view>
+				<f7-page>
+					<f7-navbar title="Задание">
+						<f7-nav-right>
+						  <f7-link popup-close>Закрыть</f7-link>
+						</f7-nav-right>
+					</f7-navbar>
+				  <f7-block><p>onetask.tsk</p></f7-block>
+				</f7-page>
+			</f7-view>
+	    </f7-popup>
+		
+		
+		
+		
+		
+	</template>	
+    </f7-page>
+	
+</template>
+
+
+
+
+
+
+
+
+
+
+  <!-- Monitor Page Template -->
+  <template id="page-monitor">
+    <f7-page>
+      <f7-navbar title="Монитор"></f7-navbar>
+      <f7-block-title>Монитор</f7-block-title>
+      <f7-block strong>
+        <p>Заглушка!</p>
+      </f7-block>
+    </f7-page>
+  </template>
+
+
+  <!-- Analitics Page Template -->
+  <template id="page-analitics">
+    <f7-page>
+		<f7-navbar>
+			<f7-nav-left><f7-link icon-f7="chevron-left" back></f7-link></f7-nav-left>
+			<f7-nav-title>Аналитика</f7-nav-title>
+		</f7-navbar>
+        <f7-block-title>Аналитика</f7-block-title>
+        <f7-block strong>
+        	<p>Заглушка!</p>
+        </f7-block>
+    </f7-page>
+  </template>  
+  
+  
+  <!-- AllNews Page Template -->
+  <template id="page-allnews">
+    <f7-page>
+		<f7-navbar>
+			<f7-nav-title>Все  новости</f7-nav-title>
+		</f7-navbar>
+
+				<div class="list media-list">
+				  <ul>
+
+				    <li v-for="curnews in $root.news">
+				      <a :href="'/news/' + curnews.id + '/'" class="item-link item-content">
+				        <div class="item-inner">
+				          <div class="item-title-row">
+				            <div class="item-title">{{curnews.ondate}}</div>
+				            <div class="item-after">{{curnews.ontime}}</div>
+				          </div>
+				          <div class="item-subtitle">{{curnews.title}}</div>
+				          <div class="item-text">{{curnews.description}}</div>
+				        </div>
+				      </a>
+				    </li>
+				    
+				  </ul>
+				</div>
+    </f7-page>
+  </template> 
+  
+  
+<!-- News Page Template -->
+<template id="page-news">
+    <f7-page>
+		<f7-navbar>
+			<f7-nav-left><f7-link icon-f7="chevron-left" back></f7-link></f7-nav-left>
+			<f7-nav-title>Новости</f7-nav-title>
+		</f7-navbar>
+		<div v-for="onenews in $root.news" :key="onenews.id" v-if="onenews.id == $f7route.params.newsid">
+			<f7-block-header>{{onenews.ondate}} {{onenews.ontime}}</f7-block-header>
+		    <f7-block-title>{{onenews.title}}</f7-block-title>
+		    <f7-block strong>{{onenews.description}}</f7-block>
+		</div>
+    </f7-page>
+</template>
+
+
+
+
+
+
+
+
+  <!-- Page Not Found Template -->
+  <template id="page-not-found">
+    <f7-page>
+      <f7-navbar title="Not found" back-link="Назад"></f7-navbar>
+      <f7-block strong>
+        <p>Извините</p>
+        <p>Запрошенный контент не найден.</p>
+      </f7-block>
+    </f7-page>
+  </template>
+
+  </div>
+
+  <!-- Cordova -->
+  <!--
+  <script src="cordova.js"></script>
+  -->
+
+  <!-- Framework7 library -->
+  <script src="libs/framework7/js/framework7.min.js"></script>
+
+  <!-- Vue -->
+  <script src="libs/vue/vue.js"></script>
+
+  <!-- Framework7-Vue plugin -->
+  <script src="libs/framework7-vue/framework7-vue.min.js"></script>
+  
+  <!-- Vue resource-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.js"></script>
+  
+  <!-- Framework7 Debuger -->
+  <script src="js/framework7.debug.js"></script>
+  
+  <!-- AXIOS library -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+  
+
+  
+
+  
+</body>
+</html>

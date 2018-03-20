@@ -1,0 +1,173 @@
+/* My Add Styles */
+
+
+.wo-bg .item-link .item-inner {
+  background-image: none !important;
+  font-weight: 600;
+}
+
+/*Background for login page*/
+.mybg {
+  background: url("../img/bg.jpg") no-repeat top center fixed !important;
+  background-size: 480px !important;
+  background-color: #F9F9F9 !important;
+}
+/*
+.ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~.page-content, .ios .page-with-subnavbar .navbar~.page-content {
+     //padding-top: 52px !important;
+}
+*/
+/*.ios .navbar~.page-content, .ios .navbar~:not(.no-navbar) .page-content {
+    padding-top: 0px !important;
+} */
+
+
+
+.mybadge {
+  font-family: -apple-system, SF UI Text, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  display: inline-block;
+  color: #6D6D72;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mybadge.color-red {
+  color: #ff3b30;
+}
+.mybadge.color-green {
+  color: #4cd964;
+}
+.mybadge.color-blue {
+  color: #007aff;
+}
+
+
+.badge.equiring{
+    font-size: 12px;
+    /*padding-top: : 6px;*/
+    width: 28px;
+    height: 28px !important;
+    border-radius: 28px;
+    color: #fff;
+    background: #148323;
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    line-height: 27px;
+}
+
+.left-item-link { 
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding: 0 15px;
+  line-height: 44px;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 600;
+  }
+  
+
+/* .navbar > .searchbar { top:44px; } */
+/* And add 88px padding top to page-content for this view */ 
+/*.page-content { padding-top:88px; } */
+
+.mygreenbutton {  
+  text-align: center;
+  display: block;
+  font-size: 16px;
+/*  overflow: hidden; не урезать*/ 
+  width: 100%;
+  }
+
+/*
+.mygreenbutton.tab-link {
+  border-bottom-width: 0px;
+}
+*/
+
+.mygreenbutton.tab-link.tab-link-active {
+  color: #4cd964;
+  text-decoration-color: #4cd964;
+  font-weight: bold;
+  background-color: transparent;
+  border-bottom-color: #4cd964;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+}
+
+.mygreenbutton.tab-link:not(.tab-link-active) { 
+   border-bottom-width: 0px !important;
+}
+
+
+.circ {
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  background-color: #148323;
+  border-top: 0px solid transparent;
+  border-left: 2px solid red;
+  border-right: 1px solid red;
+  border-bottom: 2px solid red;
+  transform: rotate(45deg);
+}
+
+.circ span {
+  color: white;
+  padding-top: 4px;
+  display: inline-block;
+  transform: rotate(-45deg) ; /*translate(-10px, 70px) */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.ios .block {
+    margin: 5px 0 !important;
+    /*padding: 0 15px;
+    color: #6d6d72;*/
+}
+
+.myblock {
+    margin: 5px 0 !important;
+    padding: 0 15px;
+    color: #6d6d72;
+}
+
+/*.myblock.h2 {
+
+    -webkit-margin-before: 0px !important;
+    -webkit-margin-after: 0px !important;
+    -webkit-margin-start: 0px !important;
+    -webkit-margin-end: 0px !important;
+    
+}*/
+
+.navbar .title span{
+	font-weight: normal;
+}
+
+.row .plan {
+	text-align: center; 
+	padding-top: 10px;
+}
+
+.row .plan span {
+	font-size: 22px; 
+	font-weight: 600;	
+}
+
+ .bigtext a{
+	font-size: 18px; 
+	font-weight: 600;
+	text-decoration: underline;
+}
+
