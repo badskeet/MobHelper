@@ -164,13 +164,17 @@ new Vue({
         const self = this
         this.loading = true
         axios.get(this.$dataURL, axiosConfig).then((response)=>{
-          console.log(response);
+          //console.log(response);
           this.loading = false;
           this.$root.tasks = response.data; //self.news = response.data;
           this.channellist = this.countChannelList(this.$root.tasks); //After recieve data starting prepare Short Channel list
           }).catch((error)=>{
               console.log(error);
-              })
+              if (error.response.status === 401) { //Token expired
+                app.f7.loginScreen.open('#my-login-screen');
+                app.f7.dialog.alert("Необходим повторный вход!","Авторизация")
+              }
+          })
       },
 
         //Make Deduplicated Channel list //Function return unique values with count from array by name

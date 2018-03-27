@@ -3,7 +3,7 @@
   <div id="app">
 
     <!-- Statusbar -->
-    <f7-statusbar></f7-statusbar>
+    <!-- <f7-statusbar></f7-statusbar> -->
 
     <!-- Views/Tabs container -->
     <f7-views tabs toolbar-through class="ios-edges" theme="green">

@@ -20,27 +20,26 @@ export default {
     //context.axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     let axiosConfig = { headers: {'Content-Type': 'application/json'} };
     context.axios.post(app.__vue__.$loginURL, JSON.stringify(creds), axiosConfig).then((response) => {
-
+      //console.log(response);
       if (response.status === 'success') { self.state.data = response.data; }
       //localStorage.setItem('id_token', response.data.id_token)
       localStorage.setItem('access_token', response.data.access_token)
       console.log("Token received!");
-
       this.user.authenticated = true;
       app.__vue__.$root.getTasks();
       //this.$emit('close');
       app.f7.loginScreen.close('#my-login-screen');
-
-      // Redirect to a specified route
+      // Redirect to a specified route if not empty
       if(redirect) {
         //router.go(redirect)
       }
 
-    }).catch((err) => {
-      //console.log("AXIOS ERROR: ", err);
+    }).catch((error) => {
+      //console.log("AXIOS ERROR: ", error);
+      //if (error.response.status === '401') { app.f7.dialog.alert("Не удалось войти!","Авторизация") }
       console.log("Token not received!");
-      app.f7.dialog.alert("Не удалось войти!")
-      context.error = err
+      app.f7.dialog.alert("Не удалось войти!","Авторизация");
+      context.error = error;
     })
   },
 
